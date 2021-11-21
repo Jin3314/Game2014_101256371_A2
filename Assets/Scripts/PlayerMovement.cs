@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//PlayerMovement.cs, YeongjinLim, 101256371, last Modified in 2021/11/20, Basicmovement for player, revision history - #01 added basic movement
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
