@@ -17,7 +17,7 @@ public class ButtonBehaviour : MonoBehaviour
     {
         
     }
-
+    //functions for changing scene
     public void OnInstructionButtonPressed()
     {
         SceneManager.LoadScene("Instruction");

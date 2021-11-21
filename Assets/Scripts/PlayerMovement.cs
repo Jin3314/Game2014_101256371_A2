@@ -5,6 +5,7 @@ using UnityEngine;
 //PlayerMovement.cs, YeongjinLim, 101256371, last Modified in 2021/11/20, Basicmovement for player, revision history - #01 added basic movement
 public class PlayerMovement : MonoBehaviour
 {
+    // Basic movements for player.(its not working right now.)
     Rigidbody2D rb;
 
     float moveDir;
