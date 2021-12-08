@@ -10,7 +10,7 @@ public class Mushroom : Monster
     {
         base.Awake();
         moveSpeed = 2f;
-        jumpPower = 50f;
+        jumpPower = 10f;
     }
 
     // Update is called once per frame
