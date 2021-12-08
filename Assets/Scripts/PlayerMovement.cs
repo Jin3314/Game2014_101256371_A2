@@ -45,10 +45,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(new Vector2(moveDir * Time.fixedDeltaTime * moveSpeed, 0));
             }
-            //else //없어도 될것 같다
-            //{
-            //    rb.velocity = new Vector2 ( moveDir * maxSpeed, rb.velocity.y ); // 이게 업데이트에 들어가면 화면이 안끊길까?
-            //}
+            else
+            {
+                rb.velocity = new Vector2(moveDir * maxSpeed, rb.velocity.y);
+            }
         }
     }
 
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if (!IsPlayingAnim(AnimName))
         {
             Anim.SetTrigger(AnimName);
+            PlayerSkinControl.Instance.SkinSetTrigger(AnimName);
         }
     }
 
@@ -116,13 +117,29 @@ public class PlayerMovement : MonoBehaviour
                 MyAnimSetTrigger("Walk");
             }
         }
+        //else if ( rb.velocity.y < 0 && !IsPlayingAnim ( "Jump" ) ) 
+        //{
+        //    MyAnimSetTrigger ( "Down" );
+        //}
     }
+    bool PlayerFlipX;
     bool PlayerFlip()
     {
-        bool flipSprite = (sr.flipX ? (moveDir > 0f) : (moveDir < 0f));
+        bool flipSprite = (PlayerFlipX ? (moveDir > 0f) : (moveDir < 0f));
         if (flipSprite)
         {
-            sr.flipX = !sr.flipX;
+            PlayerFlipX = !PlayerFlipX;
+
+            Vector3 thisScale = transform.localScale;
+            if (PlayerFlipX)
+            {
+                thisScale.x = -Mathf.Abs(thisScale.x);
+            }
+            else
+            {
+                thisScale.x = Mathf.Abs(thisScale.x);
+            }
+            transform.localScale = thisScale;
             GroundFriction();
         }
         return flipSprite;
@@ -132,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.size, 0, Vector2.down, 0.01f, whatisGround))
         {
             isGround = true;
+            //Anim.ResetTrigger ( "Idle" );
         }
         else
         {
