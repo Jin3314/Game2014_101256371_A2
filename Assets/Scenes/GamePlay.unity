@@ -1077,22 +1077,22 @@ MonoBehaviour:
     - {fileID: 7400000, guid: 9b52fcdb35976ee4c9fb7d9722972b6e, type: 2}
   - AnimClips:
     - {fileID: 7400000, guid: 3639f13baa9c29f4f9dbeb25c2b2f819, type: 2}
-    - {fileID: 7400000, guid: 07280f5cb4b72d44eaa6b4533d51a2c0, type: 2}
-    - {fileID: 7400000, guid: 70ca26a1c09e7bf4098b8dd74669e2c4, type: 2}
-    - {fileID: 7400000, guid: b706731394c7daf4c887af2e010e920a, type: 2}
-    - {fileID: 7400000, guid: fafed60b75a571b4ebddca07a1dc89cc, type: 2}
+    - {fileID: 7400000, guid: ea409af4eed25734ab777112e7f880bb, type: 2}
+    - {fileID: 7400000, guid: 48e088f0daccb074fb45ecb6d8561998, type: 2}
+    - {fileID: 7400000, guid: 6aa6ec22199ae4c46aee194efa5762a9, type: 2}
+    - {fileID: 7400000, guid: 27d34e6974c69e04889129040804257b, type: 2}
   - AnimClips:
-    - {fileID: 7400000, guid: 49ed770e5c589c049bca7f1cda2b97e1, type: 2}
-    - {fileID: 7400000, guid: 25aa6c4aac488a34d9fba42d7d787e63, type: 2}
-    - {fileID: 7400000, guid: cd058bb82c9de5e4a81aff0759acdea9, type: 2}
-    - {fileID: 7400000, guid: 83d42bb220df2f4428c70348ca834ba4, type: 2}
-    - {fileID: 7400000, guid: a6ed98a7808d36146a020d188786755d, type: 2}
+    - {fileID: 7400000, guid: 1f31ac42481c1d944a5729a7b42e4920, type: 2}
+    - {fileID: 7400000, guid: 348d893e0b548724aaf6c8830ab27338, type: 2}
+    - {fileID: 7400000, guid: 8cb27747e143ca64ab25cb504380fbdb, type: 2}
+    - {fileID: 7400000, guid: c011f46ef2efa1b43b2ba2f38f0a9f6e, type: 2}
+    - {fileID: 7400000, guid: 00c93e1757a098e43980f13dcf017a96, type: 2}
   - AnimClips:
-    - {fileID: 7400000, guid: 5e48ca902ca97ac4ca57248f1d277928, type: 2}
-    - {fileID: 7400000, guid: 7fd3260ec888a7d4f8cf899c9c034b8e, type: 2}
-    - {fileID: 7400000, guid: fdf53e29048dc01408a328c61395decc, type: 2}
-    - {fileID: 7400000, guid: 6bfa1282bb3600942aa3b43c5daa3423, type: 2}
-    - {fileID: 7400000, guid: 6346e97882730ec4f910d6c70deb6b92, type: 2}
+    - {fileID: 7400000, guid: a0d6f2f3b8c2ad749ae84ef668751e0d, type: 2}
+    - {fileID: 7400000, guid: 4903744af2b057e42bfcae405c1d382c, type: 2}
+    - {fileID: 7400000, guid: ffa03590a6781584d985d7503d77f2d5, type: 2}
+    - {fileID: 7400000, guid: db0ad34ae20dab74f8cf10829035d5e8, type: 2}
+    - {fileID: 7400000, guid: 4322b1a761be72c4baaa92f13d39b68f, type: 2}
   HelmetArrays:
   - AnimClips:
     - {fileID: 7400000, guid: f322c20ad54991b488b5bde3ea03372b, type: 2}
