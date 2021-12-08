@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerHitBox
+  - Monster
+  - MonsterHitBox
   layers:
   - Default
   - TransparentFX
@@ -21,9 +24,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Monster
+  - MonsterHitBox
+  - PlayerHitBox
   - 
   - 
   - 
