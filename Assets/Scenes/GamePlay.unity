@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 1
   moveSpeed: 5
-  jumpPower: 10
+  jumpPower: 1
   atkCoolTime: 3
   atkCoolTimeCalc: 3
   isHit: 0

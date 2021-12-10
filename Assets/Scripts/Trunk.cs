@@ -21,7 +21,7 @@ public class Trunk : Monster
     {
         base.Awake();
         moveSpeed = 1f;
-        jumpPower = 15f;
+        jumpPower = 5f;
         currentHp = 4;
         atkCoolTime = 3f;
         atkCoolTimeCalc = atkCoolTime;
