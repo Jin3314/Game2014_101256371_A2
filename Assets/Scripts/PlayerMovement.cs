@@ -21,6 +21,15 @@ public class PlayerMovement : MonoBehaviour
     public Animator Anim;
 
     public bool isGround;
+
+    public bool LeftMove = false;
+    public bool RightMove = false;
+    public bool Jump = false;
+    public bool isJump = false;
+
+    Vector3 moveVelocity = Vector3.zero;
+
+    float movespeed = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +45,26 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         PlayerAnim();
         GroundFriction();
+
+        if (LeftMove == true)
+        {
+
+            moveDir = -1;
+           
+
+        }
+        if (RightMove == true)
+        {
+            moveDir = 1;
+        }
+
+        if (Jump && isGround && !IsPlayingAnim("Attack"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower); // 
+            MyAnimSetTrigger("Jump");
+            Jump = false;
+        }
+
     }
     private void FixedUpdate()
     {
@@ -43,7 +72,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (PlayerFlip() || Mathf.Abs(moveDir * rb.velocity.x) < maxSpeed)
             {
-                rb.AddForce(new Vector2(moveDir * Time.fixedDeltaTime * moveSpeed, 0));
+                if(moveDir == -1)
+                {
+                    rb.AddForce(new Vector2(moveDir * Time.fixedDeltaTime * moveSpeed, 0));
+                }
+                if (moveDir == 1)
+                {
+                    rb.AddForce(new Vector2(moveDir * Time.fixedDeltaTime * moveSpeed, 0));
+                }
             }
             else
             {
@@ -72,10 +108,15 @@ public class PlayerMovement : MonoBehaviour
     void PlayerInput()
     {
         moveDir = Input.GetAxisRaw("Horizontal");
+       
+
         if (Input.GetKeyDown(KeyCode.Space) && isGround && !IsPlayingAnim("Attack"))
         {
+
             rb.velocity = new Vector2(rb.velocity.x, jumpPower); // 
             MyAnimSetTrigger("Jump");
+
+
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
