@@ -74,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(IsPlayingAnim("Dmg") || isHit)
+        {
+            rb.velocity *= 0.78f;
+            return;
+        }
         if (!IsPlayingAnim("Attack"))
         {
             if (PlayerFlip() || Mathf.Abs(moveDir * rb.velocity.x) < maxSpeed)
@@ -113,6 +118,10 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerInput()
     {
+        if(IsPlayingAnim("Dmg") || isHit)
+        {
+            return;
+        }
         moveDir = Input.GetAxisRaw("Horizontal");
        
 
@@ -153,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void PlayerAnim()
     {
-        if (isGround && !IsPlayingAnim("Attack"))
+        if (isGround && !IsPlayingAnim("Attack") && !IsPlayingAnim("Dmg"))
         {
             if ((Mathf.Abs(moveDir) <= 0.01f || Mathf.Abs(rb.velocity.x) <= 0.01f) && Mathf.Abs(rb.velocity.y) <= 0.01f)
             {

@@ -13,7 +13,7 @@ public class PlayerAction : MonoBehaviour
 
     public SpriteRenderer[] sprites;
 
-    public float hitRecovery = 0.2f;
+    public float hitRecovery = 3.0f;
     public bool equipShield;
     public bool equipWeapon;
     bool invincible;
@@ -37,6 +37,7 @@ public class PlayerAction : MonoBehaviour
     }
     IEnumerator InvincibleEffect()
     {
+        
         invincible = true; //무적    
 
         foreach (SpriteRenderer SR in sprites)

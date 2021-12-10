@@ -26,9 +26,14 @@ public class PlayerSkinControl : MonoBehaviour
 
     public void SkinSetTrigger(string AnimName)
     {
+        int i = 0;
         foreach (PlayerSkin skin in PlayerSkins)
         {
-            skin.anim.SetTrigger(AnimName);
+            if (PlayerSkins[i].gameObject.activeInHierarchy)
+            {
+                skin.anim.SetTrigger(AnimName);
+            }
+            i++;
         }
     }
 }

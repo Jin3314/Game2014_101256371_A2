@@ -9,7 +9,7 @@ public class PlayerSkin : MonoBehaviour
     public Animator anim;
     public AnimatorOverrideController aoc;
 
-    void Start()
+    void Awake() 
     {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
