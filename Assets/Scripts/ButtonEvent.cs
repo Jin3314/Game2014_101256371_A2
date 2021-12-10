@@ -49,5 +49,15 @@ public class ButtonEvent : MonoBehaviour
         player.Jump = false;
     }
 
+    public void AttackDown()
+    {
+        player.Attack = true;
+    }
+
+    public void AttackUp()
+    {
+        player.Attack = false;
+    }
+
 
 }

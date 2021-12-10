@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     BoxCollider2D boxCollider;
     SpriteRenderer sr;
     float refVelocity;
@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public bool Jump = false;
     public bool isJump = false;
 
+    public bool Attack = false;
+
+    public bool isHit = false;
     Vector3 moveVelocity = Vector3.zero;
 
     float movespeed = 4;
@@ -64,7 +67,10 @@ public class PlayerMovement : MonoBehaviour
             MyAnimSetTrigger("Jump");
             Jump = false;
         }
-
+        if (Attack)
+        {
+            MyAnimSetTrigger("Attack");
+        }
     }
     private void FixedUpdate()
     {
@@ -88,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    bool IsPlayingAnim(string AnimName)
+    public bool IsPlayingAnim(string AnimName)
     {
         if (Anim.GetCurrentAnimatorStateInfo(0).IsName(AnimName))
         {
@@ -96,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
-    void MyAnimSetTrigger(string AnimName)
+    public void MyAnimSetTrigger(string AnimName)
     {
         if (!IsPlayingAnim(AnimName))
         {

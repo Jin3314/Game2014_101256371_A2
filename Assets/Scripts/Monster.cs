@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public int currentHp = 1;
+    public int currentHp = 5;
     public float moveSpeed = 5f;
     public float jumpPower = 10;
     public float atkCoolTime = 3f;
@@ -120,14 +120,33 @@ public class Monster : MonoBehaviour
         currentHp -= dam;
         isHit = true;
         // Knock Back or Dead
+
+        if(currentHp <= 0)
+        {
+            Debug.Log("Monster Dead");
+        }
+        else
+        {
+            MyAnimSetTrigger("Hit");
+            rb.velocity = Vector2.zero;
+            if(transform.position.x > PlayerData.Instance.Player.transform.position.x)
+            {
+                rb.velocity = new Vector2(10f, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-10f, 0);
+            }
+        }
+
         hitBoxCollider.SetActive(false);
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        //if ( collision.transform.CompareTag ( ?? ) )
-        //{
-        //TakeDamage ( 0 );
-        //}
+        if ( collision.transform.CompareTag ("PlayerWeapon" ) )
+        {
+          TakeDamage ( 0 );
+        }
     }
 }
