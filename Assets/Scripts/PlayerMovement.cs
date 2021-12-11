@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         if (RightMove == true)
         {
             moveDir = 1;
+           
         }
 
         if (Jump && isGround && !IsPlayingAnim("Attack"))
@@ -92,10 +93,11 @@ public class PlayerMovement : MonoBehaviour
                     rb.AddForce(new Vector2(moveDir * Time.fixedDeltaTime * moveSpeed, 0));
                 }
             }
-            else
+            /* else
             {
                 rb.velocity = new Vector2(moveDir * maxSpeed, rb.velocity.y);
-            }
+            }*/
+
         }
     }
 
@@ -202,14 +204,20 @@ public class PlayerMovement : MonoBehaviour
     }
     void GroundCheck()
     {
-        if (Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.size, 0, Vector2.down, 0.01f, whatisGround))
+        RaycastHit2D GroundBoxHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.3f, whatisGround);
+
+        if (GroundBoxHit &&
+            (GroundBoxHit.collider.transform.CompareTag("MovingPlatform") || GroundBoxHit.collider.transform.CompareTag("OneWayPlatform")))
         {
-            isGround = true;
-            //Anim.ResetTrigger ( "Idle" );
+            isGround = (GroundBoxHit.collider.bounds.max.y <= boxCollider.bounds.min.y + 0.1f);
         }
         else
         {
-            isGround = false;
+            isGround = GroundBoxHit;
         }
+
+        Color rayColor;
+        rayColor = isGround ? Color.green : Color.red;
+        Debug.DrawRay(new Vector2(boxCollider.bounds.center.x, boxCollider.bounds.center.y - boxCollider.bounds.extents.y), Vector2.down * (0.1f), rayColor);
     }
 }

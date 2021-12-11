@@ -9,6 +9,8 @@ TagManager:
   - MonsterHitBox
   - Projectile
   - PlayerWeapon
+  - OneWayPlatform
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: foreground
+    uniqueID: 3065605875
     locked: 0
