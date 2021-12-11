@@ -24,7 +24,7 @@ public class Mushroom : Monster
                 Physics2D.OverlapCircle(wallCheck[1].position, 0.01f, layerMask) &&
                  !Physics2D.Raycast(transform.position, -transform.localScale.x * transform.right, 1f, layerMask))
             {
-                Debug.Log("Hit");
+                //Debug.Log("Hit");
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             }
             else if (Physics2D.OverlapCircle(wallCheck[1].position, 0.01f, layerMask))

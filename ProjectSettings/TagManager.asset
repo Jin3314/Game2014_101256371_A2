@@ -11,6 +11,7 @@ TagManager:
   - PlayerWeapon
   - OneWayPlatform
   - MovingPlatform
+  - NextStage
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1460356327
+    locked: 0
+  - name: Midground
+    uniqueID: 106513579
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
