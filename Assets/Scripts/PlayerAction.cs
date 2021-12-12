@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerAction : MonoBehaviour
 {
@@ -18,9 +20,29 @@ public class PlayerAction : MonoBehaviour
     public bool equipWeapon;
     bool invincible;
 
+    public int playerHP = 5;
+
+    [SerializeField]
+    private Text HPText;
+
+    [SerializeField]
+    private Text ScoreText;
+
+    public int score = 0;
+
+   
+
     private void Awake()
     {
         StartCoroutine(ResetCollider());
+        
+    }
+
+    void Update()
+    {
+        HPText.text = playerHP.ToString();
+
+        ScoreText.text = score.ToString();
     }
 
     IEnumerator ResetCollider()
@@ -66,6 +88,13 @@ public class PlayerAction : MonoBehaviour
             {
                 StartCoroutine(InvincibleEffect());
                 Debug.Log("HP-- ");
+
+                playerHP = playerHP - 1;
+
+                if(playerHP == 0)
+                {
+                    Dead();
+                }
             }
 
             playerMovement.rb.velocity = Vector2.zero;
@@ -86,6 +115,18 @@ public class PlayerAction : MonoBehaviour
                 playerMovement.MyAnimSetTrigger("DMG");
             }
         }
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Debug.Log("Finished");
+            SceneManager.LoadScene("GameWin");
+
+        }
+    }
+
+    private void Dead()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
 

@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour
     public Animator Anim;
     public LayerMask layerMask;
 
+    AudioSource audioSource;
 
     protected void Awake()
     {
@@ -27,6 +28,7 @@ public class Monster : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         Anim = GetComponent<Animator>();
 
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(CalcCoolTime());
         StartCoroutine(ResetCollider());
     }
@@ -117,16 +119,24 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(int dam)
     {
+
+        dam = 1;
         currentHp -= dam;
         isHit = true;
         // Knock Back or Dead
 
         if(currentHp <= 0)
         {
+            audioSource.Play();
             Debug.Log("Monster Dead");
+            Destroy(gameObject);
+
+            PlayerAction playerAction = GameObject.Find("PLAYER").GetComponent<PlayerAction>();
+            playerAction.score += 10;
         }
         else
         {
+            audioSource.Play();
             MyAnimSetTrigger("Hit");
             rb.velocity = Vector2.zero;
             if(transform.position.x > PlayerData.Instance.Player.transform.position.x)
@@ -149,4 +159,5 @@ public class Monster : MonoBehaviour
           TakeDamage ( 0 );
         }
     }
+
 }

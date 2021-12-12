@@ -9,6 +9,14 @@ public class PlayerMovement : MonoBehaviour
     SpriteRenderer sr;
     float refVelocity;
 
+    public AudioClip audioJump;
+    public AudioClip audioAttack;
+    public AudioClip audioDamaged;
+    public AudioClip audioItem;
+    public AudioClip audioDie;
+    public AudioClip audioFinish;
+    AudioSource audioSource;
+
     public float moveDir;
     public float moveSpeed = 4500f;
     public float maxSpeed = 5.5f;
@@ -40,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
+        this.audioSource = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update()
@@ -66,17 +75,20 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower); // 
             MyAnimSetTrigger("Jump");
+            PlaySound("JUMP");
             Jump = false;
         }
         if (Attack)
         {
             MyAnimSetTrigger("Attack");
+            PlaySound("ATTACK");
         }
     }
     private void FixedUpdate()
     {
         if(IsPlayingAnim("Dmg") || isHit)
         {
+            PlaySound("DAMAGED");
             rb.velocity *= 0.78f;
             return;
         }
@@ -100,7 +112,41 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)  //damaged
+    {
+        if (collision.gameObject.tag == "Item")
+        {
+            //Point
+            bool isSilver = collision.gameObject.name.Contains("Silver");
+            bool isGold = collision.gameObject.name.Contains("Gold");
+            bool isEmerald = collision.gameObject.name.Contains("Emerald");
 
+            if (isSilver)
+            {
+                PlayerAction playerAction = GameObject.Find("PLAYER").GetComponent<PlayerAction>();
+                playerAction.score += 50;
+            }
+            else if (isGold)
+            {
+                PlayerAction playerAction = GameObject.Find("PLAYER").GetComponent<PlayerAction>();
+                playerAction.score += 100;
+            }
+            else if (isEmerald)
+            {
+                PlayerAction playerAction = GameObject.Find("PLAYER").GetComponent<PlayerAction>();
+                playerAction.score += 200;
+            }
+            //Sound
+            PlaySound("ITEM");
+            //Deactive Item
+            collision.gameObject.SetActive(false);
+        }
+
+
+   
+
+
+        } 
     public bool IsPlayingAnim(string AnimName)
     {
         if (Anim.GetCurrentAnimatorStateInfo(0).IsName(AnimName))
@@ -133,12 +179,14 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower); // 
             MyAnimSetTrigger("Jump");
 
-
+            PlaySound("JUMP");
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             MyAnimSetTrigger("Attack");
+            PlaySound("ATTACK");
         }
+        
         //else if ( Input.GetKeyDown ( KeyCode.UpArrow ) )
         //{
         //  InterAct
@@ -155,6 +203,7 @@ public class PlayerMovement : MonoBehaviour
             if (IsPlayingAnim("Attack"))
             {
                 rb.velocity = new Vector2(Mathf.SmoothDamp(rb.velocity.x, 0f, ref refVelocity, slideRate + AttackSlideRate), rb.velocity.y);
+               
             }
             else if (Mathf.Abs(moveDir) <= 0.01f)
             {
@@ -219,5 +268,31 @@ public class PlayerMovement : MonoBehaviour
         Color rayColor;
         rayColor = isGround ? Color.green : Color.red;
         Debug.DrawRay(new Vector2(boxCollider.bounds.center.x, boxCollider.bounds.center.y - boxCollider.bounds.extents.y), Vector2.down * (0.1f), rayColor);
+    }
+
+    void PlaySound(string action)
+    {
+        switch (action)
+        {
+            case "JUMP":
+                audioSource.clip = audioJump;
+                break;
+            case "ATTACK":
+                audioSource.clip = audioAttack;
+                break;
+            case "DAMAGED":
+                audioSource.clip = audioDamaged;
+                break;
+            case "ITEM":
+                audioSource.clip = audioItem;
+                break;
+            case "DIE":
+                audioSource.clip = audioDie;
+                break;
+            case "FINISH":
+                audioSource.clip = audioFinish;
+                break;
+        }
+        audioSource.Play();
     }
 }

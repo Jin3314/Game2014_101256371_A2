@@ -8,6 +8,7 @@ public class UISkinChangeBtn : MonoBehaviour
 
     public void ChangeWeaponButton(int index)
     {
+        Debug.Log("Clicked");
         playerAction.EquipWeapon(index);
         if (index == -1)
         {
@@ -22,6 +23,7 @@ public class UISkinChangeBtn : MonoBehaviour
     }
     public void ChangeArmorButton(int index)
     {
+        Debug.Log("Clicked");
         if (index == -1)
         {
             PlayerSkinControl.Instance.PlayerSkins[1].EquipItem(null);
@@ -35,6 +37,7 @@ public class UISkinChangeBtn : MonoBehaviour
     }
     public void ChangeHelmetButton(int index)
     {
+        Debug.Log("Clicked");
         if (index == -1)
         {
             PlayerSkinControl.Instance.PlayerSkins[2].EquipItem(null);
@@ -48,6 +51,7 @@ public class UISkinChangeBtn : MonoBehaviour
     }
     public void ChangeShieldButton(int index)
     {
+        Debug.Log("Clicked");
         if (index == -1)
         {
             playerAction.EquipShield(false);
@@ -63,6 +67,7 @@ public class UISkinChangeBtn : MonoBehaviour
     }
     public void ChangeShoeButton(int index)
     {
+        Debug.Log("Clicked");
         playerAction.EquipShoe(index);
         if (index == -1)
         {
