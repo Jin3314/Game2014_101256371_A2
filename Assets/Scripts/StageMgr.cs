@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * StageMgr.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for script manager.
+ */
 public class StageMgr : MonoBehaviour
 {
     public static StageMgr Instance
@@ -26,6 +32,7 @@ public class StageMgr : MonoBehaviour
     public Image FadeInOutImg;
 
     float a;
+    //fade in and out effect
     public IEnumerator FadeIn()
     {
         a = 1;
@@ -43,7 +50,7 @@ public class StageMgr : MonoBehaviour
 
     }
    
-
+    //move to next potal.
     public IEnumerator MoveNext(Collider2D collision, Vector3 destination, bool fadeInOut, bool SmoothMoving)
     {
         yield return null;

@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * UISkinChangeBtn.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for skinchange button.
+ */
+
 public class UISkinChangeBtn : MonoBehaviour
 {
     public PlayerAction playerAction;   //추가
 
-    public void ChangeWeaponButton(int index)
+    public void ChangeWeaponButton(int index) // for weapon button
     {
         Debug.Log("Clicked");
         playerAction.EquipWeapon(index);
@@ -21,7 +28,7 @@ public class UISkinChangeBtn : MonoBehaviour
             PlayerSkinControl.Instance.PlayerSkins[0].EquipItem(SkinMgr.Instance.WeaponArrays[index].AnimClips);
         }
     }
-    public void ChangeArmorButton(int index)
+    public void ChangeArmorButton(int index) //for armor button
     {
         Debug.Log("Clicked");
         if (index == -1)
@@ -35,7 +42,7 @@ public class UISkinChangeBtn : MonoBehaviour
             PlayerSkinControl.Instance.PlayerSkins[1].EquipItem(SkinMgr.Instance.ArmorArrays[index].AnimClips);
         }
     }
-    public void ChangeHelmetButton(int index)
+    public void ChangeHelmetButton(int index) //for helmet button
     {
         Debug.Log("Clicked");
         if (index == -1)

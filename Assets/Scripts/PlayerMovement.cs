@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * PlayerMovement.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for PlayerMovement
+ */
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;

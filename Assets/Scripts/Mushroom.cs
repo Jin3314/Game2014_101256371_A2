@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Mushroom.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for Mushroom Monster
+ */
 public class Mushroom : Monster
 {
     public Transform[] wallCheck;

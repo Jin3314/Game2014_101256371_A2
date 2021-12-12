@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
-
+/*
+ * Bunny.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for Bunny monster
+ */
 public class Bunny : Monster
 {
     public enum State

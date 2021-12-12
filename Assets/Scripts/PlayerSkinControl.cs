@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * PlayerSkinControl.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for player's skin control
+ */
 public class PlayerSkinControl : MonoBehaviour
 {
     public static PlayerSkinControl Instance // singlton     

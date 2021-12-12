@@ -15,7 +15,7 @@ public class PlayerAction : MonoBehaviour
 
     public SpriteRenderer[] sprites;
 
-    public float hitRecovery = 3.0f;
+    public float hitRecovery = 1.0f;
     public bool equipShield;
     public bool equipWeapon;
     bool invincible;
@@ -87,6 +87,7 @@ public class PlayerAction : MonoBehaviour
             if (!invincible)
             {
                 StartCoroutine(InvincibleEffect());
+                StartCoroutine(ResetCollider());
                 Debug.Log("HP-- ");
 
                 playerHP = playerHP - 1;

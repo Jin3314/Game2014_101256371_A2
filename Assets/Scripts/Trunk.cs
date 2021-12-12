@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
+/*
+ * Trunk.cs
+ * Made by YeongjinLim 101256371
+ * Last modified in 2021-12-12
+    Script for monster trunk
+ */
 public class Trunk : Monster
 {
     public enum State
@@ -29,6 +35,7 @@ public class Trunk : Monster
         StartCoroutine(FSM());
     }
 
+    //coroutines for trunk's animation.
     IEnumerator FSM()
     {
         while (true)
