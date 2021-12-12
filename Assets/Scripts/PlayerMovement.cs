@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
             else if (isEmerald)
             {
                 PlayerAction playerAction = GameObject.Find("PLAYER").GetComponent<PlayerAction>();
-                playerAction.score += 200;
+                playerAction.score += 300;
             }
             //Sound
             PlaySound("ITEM");
